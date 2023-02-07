@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         return view
     }()
     
+    //이메일주소 또는 전화번호
     private lazy var emailInfoLable: UILabel = {
         let label = UILabel()
         label.text = "이메일주소 또는 전화번호"
@@ -26,18 +27,77 @@ class ViewController: UIViewController {
     }()
     
     private lazy var emailTextField: UITextField = {
-    let tf = UITextField()
-    tf.frame.size.height = 48
-    tf.backgroundColor = .clear
-    tf.textColor = .white
-    tf.tintColor = .white
-    tf.autocapitalizationType = .none
-    tf.autocorrectionType = .no
-    tf.spellCheckingType = .no
-    tf.keyboardType = .emailAddress
-    return tf
+        let tf = UITextField()
+        tf.frame.size.height = 48
+        tf.backgroundColor = .clear
+        tf.textColor = .white
+        tf.tintColor = .white
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
+        tf.keyboardType = .emailAddress
+        return tf
     }()
 
+    private lazy var passwordTextFieldView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.darkGray
+        view.roundCorners(radius: 5)
+        return view
+    }()
+    
+    //메모리에 올라간 것 뿐이다.
+    private var passwordInfoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "비밀번호"
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        tf.frame.size.height = 48
+        tf.backgroundColor = .clear
+        tf.textColor = .white
+        tf.tintColor = .white
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        
+        // 비밀번호 입력을 하는 텍스트 필드니까 비밀번호 가리는 설정
+        tf.isSecureTextEntry = true
+        tf.clearsOnBeginEditing = false
+        //tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return tf
+    }()
+    
+    
+    private let passwordSecureButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("표시", for: .normal)
+        button.setTitleColor(.lightGray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
+      //  button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        return button
+    }()
+    
+    // MARK:: -로그인 버튼
+    private let loginButton: UIButton = {
+        let button = UIButton(type:  .custom)
+        button.backgroundColor = .clear
+        button.roundCorners(radius: 5)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.setTitle("로그인", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.isEnabled = false
+        //  button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
